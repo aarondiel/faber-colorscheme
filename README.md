@@ -51,6 +51,6 @@ this allows you to make your own colorschemes using the functions defined in thi
 | cyan          | `#5ba8b0`             | 6                |
 | light_cyan    | `#7de4f0`             | 14               |
 | black         | `#061115`             | 0                |
-| grey          | `#101b1f`             | 8                |
-| light_grey    | `#212c30`             | 7                |
+| grey          | `#282e30`             | 8                |
+| light_grey    | `#9da5a8`             | 7                |
 | white         | `#edebea`             | 15               |

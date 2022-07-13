@@ -1,16 +1,17 @@
 local faber = {}
 
 faber.styles = {
-	"bold",
-	"underline",
-	"underlineline",
-	"undercurl",
-	"underdot",
-	"underdash",
-	"strikethrough",
-	"reverse",
-	"italic",
-	"standout"
+	bold = "bold",
+	underline = "underline",
+	underlineline = "underlineline",
+	undercurl = "undercurl",
+	underdot = "underdot",
+	underdash = "underdash",
+	strikethrough = "strikethrough",
+	inverse = "reverse",
+	italic = "italic",
+	standout = "standout",
+	none = "nocombine"
 }
 
 faber.colors = {}
