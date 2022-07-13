@@ -21,6 +21,10 @@ function faber.register_colors(colors)
 end
 
 function faber.add_highlight_group(group_name, foreground, background, style)
+	if type(style) == "table" then
+		style = table.concat(style, ",")
+	end
+
 	local group_options = {
 		cterm = style,
 		gui = style
