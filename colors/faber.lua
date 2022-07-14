@@ -89,8 +89,54 @@ local groups = {
 	-- Scrollbar = { fg = nil, bg = nil, style = nil },
 	-- Tooltip = { fg = nil, bg = nil, style = nil },
 
+	-- *Comment	any comment
+	--
+	-- *Constant	any constant
+	--  String		a string constant: "this is a string"
+	--  Character	a character constant: 'c', '\n'
+	--  Number		a number constant: 234, 0xff
+	--  Boolean	a boolean constant: TRUE, false
+	--  Float		a floating point constant: 2.3e10
+	--
+	-- *Identifier	any variable name
+	--  Function	function name (also: methods for classes)
+	--
+	-- *Statement	any statement
+	--  Conditional	if, then, else, endif, switch, etc.
+	--  Repeat		for, do, while, etc.
+	--  Label		case, default, etc.
+	--  Operator	"sizeof", "+", "*", etc.
+	--  Keyword	any other keyword
+	--  Exception	try, catch, throw
+	--
+	-- *PreProc	generic Preprocessor
+	--  Include	preprocessor #include
+	--  Define		preprocessor #define
+	--  Macro		same as Define
+	--  PreCondit	preprocessor #if, #else, #endif, etc.
+	--
+	-- *Type		int, long, char, etc.
+	--  StorageClass	static, register, volatile, etc.
+	--  Structure	struct, union, enum, etc.
+	--  Typedef	A typedef
+	--
+	-- *Special	any special symbol
+	--  SpecialChar	special character in a constant
+	--  Tag		you can use CTRL-] on this
+	--  Delimiter	character that needs attention
+	--  SpecialComment	special things inside a comment
+	--  Debug		debugging statements
+	--
+	-- *Underlined	text that stands out, HTML links
+	--
+	-- *Ignore		left blank, hidden  |hl-Ignore|
+	--
+	-- *Error		any erroneous construct
+	--
+	-- *Todo		anything that needs extra attention; mostly the
+
 	CmpItemAbbr = { fg = colors.light_grey, bg = nil, style = nil },
-	CmpItemAbbrDeprecated = { fg = nil, bg = nil, style = faber.styles.strikethrough },
+	CmpItemAbbrDeprecated = { fg = colors.grey, bg = nil, style = faber.styles.strikethrough },
 	CmpItemAbbrMatch = { fg = colors.white, bg = nil, style = nil },
 	-- CmpItemAbbrMatchFuzzy = { fg = nil, bg = nil, style = nil },
 	CmpItemKind = { fg = colors.yellow, bg = nil, style = nil },
@@ -110,7 +156,7 @@ local groups = {
 	-- TSError = { fg = nil, bg = nil, style = nil },
 	-- TSException = { fg = nil, bg = nil, style = nil },
 	TSField = { fg = colors.cyan, bg = nil, style = faber.styles.none },
-	TSFloat = { fg = nil, bg = colors.white, style = nil },
+	-- TSFloat = { fg = nil, bg = colors.white, style = nil },
 	TSFunction = { fg = colors.light_cyan, bg = nil, style = nil },
 	TSFuncBuiltin = { fg = colors.light_cyan, bg = nil, style = nil },
 	TSFuncMacro = { fg = colors.light_cyan, bg = nil, style = nil },
@@ -206,4 +252,4 @@ local groups = {
 }
 
 faber.register_colors(colors)
-faber.add_highlight_groups(groups)
+faber.highlight_groups(groups)
