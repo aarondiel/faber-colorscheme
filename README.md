@@ -11,7 +11,7 @@ add the colorscheme in your packer config and set the colorscheme
 add({
 	"aarondiel/faber-colorscheme",
 	config = function()
-		vim.cmd("colorscheme faber")
+		vim.cmd("silent colorscheme faber")
 	end
 })
 ```
