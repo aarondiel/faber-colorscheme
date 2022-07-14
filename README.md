@@ -24,7 +24,7 @@ add({
 
 you can also import faber in lua using `require("faber")`.
 
-see [data types](#data types) for an explenation / definition for types like `styles`, `color`, `group`
+see [data types](#data-types) for an explenation / definition for types like `styles`, `color`, `group`
 
 available properties:
 - `styles: styles`
@@ -104,7 +104,7 @@ faber.highlight_groups({
 })
 ```
 
-## data layout / types
+## data types
 
 typescript-styled types are provided for illustration purposes.
 
@@ -127,7 +127,7 @@ an empty `table` or `nil` results in the color being inherited.
 **color.color** sets the true color, only specifying a `string` for **color** has the same affect as providing a table with only **color** filled out.
 
 **color.fallback** is used if *termguicolors* is turned off and uses the specified terminal color number.
-(see [default colorscheme](#default colorscheme) for standart base 16 codes and their corresponding color)
+(see [default colorscheme](#default-colorscheme) for standart base 16 codes and their corresponding color)
 
 ### styles
 ```typescript
