@@ -1,12 +1,14 @@
 local faber = {} local none_color = { color = "NONE", fallback = "NONE" }
 
-faber.styles = { bold = "bold", underline = "underline", underline_double =
-	"underlineline",
+faber.styles = {
+	bold = "bold",
+	underline = "underline",
+	underline_double = "underlineline",
 	underline_curly = "undercurl",
 	underline_dotted = "underdot",
 	underline_dashed = "underdash",
 	strikethrough = "strikethrough",
-	inverse_background_foreground = "reverse",
+	inverse_foreground_background = "reverse",
 	italic = "italic",
 	standout = "standout",
 	none = "nocombine"
@@ -128,7 +130,7 @@ function faber.highlight_group(group_name, foreground, background, style)
 		calculate_style_argument(style)
 	}
 
-	local command = filter(command, function(cmd)
+	command = filter(command, function(cmd)
 		return cmd ~= ""
 	end)
 
