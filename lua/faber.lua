@@ -132,6 +132,10 @@ function faber.highlight_group(group_name, foreground, background, style)
 		return cmd ~= ""
 	end)
 
+	if #command == 2 then
+		return
+	end
+
 	vim.cmd(table.concat(command, " "))
 end
 
@@ -147,13 +151,7 @@ function faber.highlight_groups(groups)
 
 		local style = group_settings["style"] or group_settings[3]
 
-		local clear = group_settings["clear"] or (
-			foreground == none_color and
-			background == none_color and
-			style == faber.styles.none
-		)
-
-		if clear then
+		if group_settings["clear"] then
 			faber.clear_highlight_group(group_name)
 		end
 
