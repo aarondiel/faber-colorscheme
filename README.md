@@ -116,8 +116,8 @@ typescript-styled types are provided for illustration purposes.
 ```typescript
 type color = string |
 	{ color?: string, fallback?: number | string } |
-	[ string, number | string] |
-null
+	[ string, number | string ] |
+	null
 ```
 
 a **color** can either be a `string`, a `table` or `nil`.
@@ -139,7 +139,7 @@ type styles = {
 	underline_dotted: "underdot",
 	underline_dashed: "underdash",
 	strikethrough: "strikethrough",
-	inverse_background_foreground: "reverse",
+	inverse_foreground_background: "reverse",
 	italic: "italic",
 	standout: "standout",
 	none: "nocombine"
@@ -198,5 +198,5 @@ setting the highlight group.
 
 ## todo:
 
-- typings using emmy lua
+- typings (emmylua seems to only provide very basic typings)
 - ability to create custom highlighting groups

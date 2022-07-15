@@ -1,4 +1,5 @@
-local faber = {} local none_color = { color = "NONE", fallback = "NONE" }
+local faber = {}
+local none_color = { color = "NONE", fallback = "NONE" }
 
 faber.styles = {
 	bold = "bold",
@@ -32,11 +33,6 @@ local function calculate_color_arguments(color, fg_bg)
 	if color == nil then
 		return ""
 	end
-
-	assert(
-		fg_bg == "fg" or fg_bg == "bg",
-		"invalid fg_bg for calculate_color_argument"
-	)
 
 	if type(color) == "string" then
 		return "gui" .. fg_bg .. "=" .. color
