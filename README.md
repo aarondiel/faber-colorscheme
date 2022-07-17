@@ -37,6 +37,12 @@ available properties:
 - `register_colors(colors: color[]): color[]`
 > save the colors in `colors`, so that they can be imported elsewhere under `faber.colors`
 
+- `get_true_colors(): Record<string, string>`
+- get a table of all colors names with their true color (if no true color is defined, it will not be included)
+
+- `get_true_colors(): Record<string, string>`
+- get a table of all colors names with their fallback color (if no fallback color is defined, it will not be included)
+
 - `clear_highlight_group(group_name: string): void`
 > clear highight group with the name `group`
 
