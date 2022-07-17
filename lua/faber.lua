@@ -29,40 +29,65 @@ local function filter(list, condition_function)
 	return result
 end
 
+local function object_map(obj, func)
+	local result = {}
+
+	for name, element in pairs(obj) do
+		result[name] = func(name, element)
+	end
+
+	return result
+end
+
+local function object_filter(obj, func)
+	local result = {}
+
+	for name, element in pairs(obj) do
+		if func(name, element) then
+			result[name] = element
+		end
+	end
+
+	return result
+end
+
+local function get_true_color(color)
+	if type(color) == "string" then
+		return color
+	end
+
+	if type(color) == "table" then
+		return color.color or color[1]
+	end
+end
+
+local function get_fallback_color(color)
+
+	if type(color) ~= "table" then
+		return
+	end
+
+	local fallback_color = color.fallback or color[2]
+
+	return tostring(fallback_color)
+end
+
 local function calculate_color_arguments(color, fg_bg)
 	if color == nil then
 		return ""
 	end
 
-	if type(color) == "string" then
-		return "gui" .. fg_bg .. "=" .. color
-	end
+	local true_color = get_true_color(color)
+	local fallback_color = get_fallback_color(color)
 
-	assert(type(color) == "table", "invalid type for forground")
 	local gui = ""
 	local cterm = ""
 
-	local true_color = color["color"] or color[1]
 	if true_color ~= nil then
-		assert(
-			type(true_color) == "string",
-			"invalid color type"
-		)
-
 		gui = "gui" .. fg_bg .. "=" .. true_color
 	end
 
-	local fallback_color = color["fallback"] or color[2]
 	if fallback_color ~= nil then
-		if type(fallback_color) == "number" then
-			fallback_color = tostring(fallback_color)
-		end
-
-		assert(
-			type(fallback_color) == "string",
-			"invalid color type"
-		)
-
 		cterm = "cterm" .. fg_bg .. "=" .. fallback_color
 	end
 
@@ -97,6 +122,24 @@ function faber.register_colors(colors)
 	faber.colors.none = none_color
 
 	return faber.colors
+end
+
+function faber.get_true_colors()
+	local result = object_map(faber.colors, get_true_color)
+
+	result = object_filter(result, function(name, _)
+		return name ~= "none"
+	end)
+
+	return result
+end
+
+function faber.get_fallback_colors()
+	local result = object_map(faber.colors, get_fallback_color)
+
+	result = object_filter(result, function(name, _)
+		return name ~= "none"
+	end)
 end
 
 function faber.clear_highlight_group(group_name)
