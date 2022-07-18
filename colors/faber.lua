@@ -1,6 +1,6 @@
 local faber = require("faber")
 
-local colors = {
+local colors = faber.register_colors({
 	red = { color = "#d9595f", fallback = 1 },
 	light_red = { color = "#f26e74", fallback = 9 },
 
@@ -23,9 +23,9 @@ local colors = {
 	grey = { color = "#282e30", fallback = 8 },
 	light_grey = { color = "#9da5a8", fallback = 7 },
 	white = { color = "#edebea", fallback = 15 }
-}
+})
 
-local groups = {
+faber.highlight_groups({
 	ColorColumn = { fg = nil, bg = colors.grey, style = nil },
 	-- Conceal = { fg = nil, bg = nil, style = nil },
 	-- Cursor = { fg = nil, bg = nil, style = nil },
@@ -44,9 +44,9 @@ local groups = {
 	-- WinSeparator = { fg = nil, bg = nil, style = nil },
 	-- Folded = { fg = nil, bg = nil, style = nil },
 	-- FoldColumn = { fg = nil, bg = nil, style = nil },
-	-- SignColumn = { fg = nil, bg = nil, style = nil },
-	-- IncSearch = { fg = nil, bg = nil, style = nil },
-	-- Substitute = { fg = nil, bg = nil, style = nil },
+	SignColumn = { clear = true },
+	IncSearch = { clear = true, fg = colors.black, bg = colors.light_yellow, style = nil },
+	Substitute = { link = "IncSearch" },
 	LineNr = { fg = colors.white, bg = nil, style = nil },
 	LineNrAbove = { fg = colors.light_grey, bg = nil, style = nil },
 	LineNrBelow = { fg = colors.light_grey, bg = nil, style = nil },
@@ -59,7 +59,7 @@ local groups = {
 	-- MsgSeparator = { fg = nil, bg = nil, style = nil },
 	-- MoreMsg = { fg = nil, bg = nil, style = nil },
 	-- NonText = { fg = nil, bg = nil, style = nil },
-	-- Normal = { fg = nil, bg = nil, style = nil },
+	Normal = { fg = colors.white, bg = nil, style = nil },
 	-- NormalFloat = { fg = nil, bg = nil, style = nil },
 	-- NormalNC = { fg = nil, bg = nil, style = nil },
 	Pmenu = { fg = nil, bg = colors.grey, style = nil },
@@ -68,7 +68,7 @@ local groups = {
 	PmenuThumb = { fg = nil, bg = colors.black, style = nil },
 	-- Question = { fg = nil, bg = nil, style = nil },
 	-- QuickFixLine = { fg = nil, bg = nil, style = nil },
-	-- Search = { fg = nil, bg = nil, style = nil },
+	Search = { clear = true, fg = colors.grey, bg = colors.yellow, style = nil },
 	-- SpecialKey = { fg = nil, bg = nil, style = nil },
 	-- SpellBad = { fg = nil, bg = nil, style = nil },
 	-- SpellCap = { fg = nil, bg = nil, style = nil },
@@ -89,51 +89,41 @@ local groups = {
 	-- Scrollbar = { fg = nil, bg = nil, style = nil },
 	-- Tooltip = { fg = nil, bg = nil, style = nil },
 
-	-- *Comment	any comment
-	--
-	-- *Constant	any constant
-	--  String		a string constant: "this is a string"
-	--  Character	a character constant: 'c', '\n'
-	--  Number		a number constant: 234, 0xff
-	--  Boolean	a boolean constant: TRUE, false
-	--  Float		a floating point constant: 2.3e10
-	--
-	-- *Identifier	any variable name
-	--  Function	function name (also: methods for classes)
-	--
-	-- *Statement	any statement
-	--  Conditional	if, then, else, endif, switch, etc.
-	--  Repeat		for, do, while, etc.
-	--  Label		case, default, etc.
-	--  Operator	"sizeof", "+", "*", etc.
-	--  Keyword	any other keyword
-	--  Exception	try, catch, throw
-	--
-	-- *PreProc	generic Preprocessor
-	--  Include	preprocessor #include
-	--  Define		preprocessor #define
-	--  Macro		same as Define
-	--  PreCondit	preprocessor #if, #else, #endif, etc.
-	--
-	-- *Type		int, long, char, etc.
-	--  StorageClass	static, register, volatile, etc.
-	--  Structure	struct, union, enum, etc.
-	--  Typedef	A typedef
-	--
-	-- *Special	any special symbol
-	--  SpecialChar	special character in a constant
-	--  Tag		you can use CTRL-] on this
-	--  Delimiter	character that needs attention
-	--  SpecialComment	special things inside a comment
-	--  Debug		debugging statements
-	--
-	-- *Underlined	text that stands out, HTML links
-	--
-	-- *Ignore		left blank, hidden  |hl-Ignore|
-	--
-	-- *Error		any erroneous construct
-	--
-	-- *Todo		anything that needs extra attention; mostly the
+	Comment = { fg = colors.light_grey, bg = nil, style = nil },
+	Constant = { fg = colors.red, bg = nil, style = faber.styles.italic },
+	String = { fg = colors.light_yellow, bg = nil, style = faber.styles.italic },
+	Character = { fg = colors.light_yellow, bg = nil, style = faber.styles.italic },
+	Number = { fg = colors.white, bg = nil, style = nil },
+	Boolean = { link = "Constant" },
+	Float = { fg = nil, bg = colors.white, style = nil },
+	-- Identifier = { fg = nil, bg = nil, style = nil },
+	Function = { fg = colors.light_cyan, bg = nil, style = nil },
+	-- Statement = { fg = nil, bg = nil, style = nil },
+	Conditional = { fg = colors.yellow, bg = nil, style = nil },
+	Repeat = { fg = colors.light_yellow, bg = nil, style = nil },
+	Label = { fg = colors.light_magenta, bg = nil, style = nil },
+	Operator = { fg = colors.white, bg = nil, style = nil },
+	Keyword = { fg = colors.light_magenta, bg = nil, style = nil },
+	Exception = { fg = nil, bg = nil, style = nil },
+	PreProc = { fg = colors.magenta, bg = nil, style = nil },
+	Include = { fg = colors.yellow, bg = nil, style = nil },
+	Define = { fg = colors.magenta, bg = nil, style = nil },
+	Macro = { fg = colors.red, bg = nil, style = faber.styles.italic },
+	-- PreCondit = { fg = nil, bg = nil, style = nil },
+	Type = { fg = colors.green, bg = nil, style = nil },
+	StorageClass = { fg = colors.green, bg = nil, style = nil },
+	-- Structure = { fg = nil, bg = nil, style = nil },
+	-- Typedef = { fg = nil, bg = nil, style = nil },
+	-- Special = { fg = nil, bg = nil, style = nil },
+	SpecialChar = { link = "Character" },
+	Tag = { fg = colors.blue, bg = nil, style = nil },
+	Delimiter = { fg = colors.yellow, bg = nil, style = nil },
+	SpecialComment = { link = "Comment" },
+	Debug = { fg = colors.light_grey, bg = nil, style = nil },
+	Underlined = { fg = nil, bg = nil, style = faber.styles.underline },
+	Ignore = { fg = nil, bg = nil, style = faber.styles.strikethrough },
+	Error = { fg = nil, bg = colors.none, style = faber.styles.underline_curly },
+	Todo = { fg = colors.white, bg = nil, style = nil },
 
 	CmpItemAbbr = { fg = colors.light_grey, bg = nil, style = nil },
 	CmpItemAbbrDeprecated = { fg = colors.grey, bg = nil, style = faber.styles.strikethrough },
@@ -143,48 +133,48 @@ local groups = {
 	-- CmpItemMenu = { fg = nil, bg = nil, style = nil },
 
 	TSAttribute = { fg = colors.red, bg = nil, style = nil },
-	TSBoolean = { fg = colors.red, bg = nil, style = nil },
-	TSCharacter = { fg = colors.light_yellow, bg = nil, style = faber.styles.italic },
-	-- TSCharacterSpecial = { fg = nil, bg = nil, style = nil },
-	TSComment = { fg = colors.light_grey, bg = nil, style = nil },
-	TSConditional = { fg = colors.yellow, bg = nil, style = nil },
-	TSConstant = { fg = colors.red, bg = nil, style = faber.styles.italic },
-	TSConstBuiltin = { fg = colors.red, bg = nil, style = faber.styles.italic },
-	TSConstMacro = { fg = colors.red, bg = nil, style = faber.styles.italic },
-	TSDebug = { fg = colors.light_grey, bg = nil, style = nil },
-	TSDefine = { fg = colors.magenta, bg = nil, style = nil },
-	-- TSError = { fg = nil, bg = nil, style = nil },
-	-- TSException = { fg = nil, bg = nil, style = nil },
+	TSBoolean = { link = "Boolean" },
+	TSCharacter = { link = "Character" },
+	TSCharacterSpecial = { link = "SpecialChar" },
+	TSComment = { link = "Comment" },
+	TSConditional = { link="Conditional" },
+	TSConstant = { link = "Constant" },
+	TSConstBuiltin = { link = "Constant" },
+	TSConstMacro = { link="Macro" },
+	TSDebug = { link="Debug" },
+	TSDefine = { link="Define" },
+	TSError = { link="Error" },
+	TSException = { link="Exception" },
 	TSField = { fg = colors.cyan, bg = nil, style = faber.styles.none },
-	-- TSFloat = { fg = nil, bg = colors.white, style = nil },
-	TSFunction = { fg = colors.light_cyan, bg = nil, style = nil },
+	TSFloat = { link = "Float" },
+	TSFunction = { link="Function" },
 	TSFuncBuiltin = { fg = colors.light_cyan, bg = nil, style = nil },
 	TSFuncMacro = { fg = colors.light_cyan, bg = nil, style = nil },
-	TSInclude = { fg = colors.yellow, bg = nil, style = nil },
-	TSKeyword = { fg = colors.light_magenta, bg = nil, style = nil },
-	TSKeywordFunction = { fg = colors.light_magenta, bg = nil, style = nil },
-	TSKeywordOperator = { fg = colors.light_magenta, bg = nil, style = nil },
-	TSKeywordReturn = { fg = colors.light_magenta, bg = nil, style = nil },
-	TSLabel = { fg = colors.light_magenta, bg = nil, style = nil },
+	TSInclude = { link="Include" },
+	TSKeyword = { link="Keyword" },
+	TSKeywordFunction = { link = "Keyword" },
+	TSKeywordOperator = { link = "Keyword" },
+	TSKeywordReturn = { link = "Keyword" },
+	TSLabel = { link="Label" },
 	TSMethod = { fg = colors.light_green, bg = nil, style = nil },
 	TSNamespace = { fg = colors.blue, bg = nil, style = nil },
-	TSNumber = { fg = colors.white, bg = nil, style = nil },
-	TSOperator = { fg = colors.white, bg = nil, style = nil },
+	TSNumber = { link = "Number" },
+	TSOperator = { link = "Operator" },
 	TSParameter = { fg = colors.cyan, bg = nil, style = nil },
 	TSParameterReference = { fg = colors.cyan, bg = nil, style = nil },
-	TSPreProc = { fg = colors.magenta, bg = nil, style = nil },
+	TSPreProc = { link="PreProc" },
 	TSProperty = { fg = colors.cyan, bg = nil, style = nil },
-	TSPunctDelimiter = { fg = colors.yellow, bg = nil, style = nil },
+	TSPunctDelimiter = { link="Delimiter" },
 	TSPunctBracket = { fg = colors.light_blue, bg = nil, style = nil },
 	TSPunctSpecial = { fg = colors.light_blue, bg = nil, style = nil },
-	TSRepeat = { fg = colors.light_yellow, bg = nil, style = nil },
-	TSStorageClass = { fg = colors.green, bg = nil, style = nil },
-	TSString = { fg = colors.light_yellow, bg = nil, style = faber.styles.italic },
+	TSRepeat = { link="Repeat" },
+	TSStorageClass = { link="StorageClass" },
+	TSString = { link = "String" },
 	TSStringRegex = { fg = colors.red, bg = nil, style = nil },
 	TSStringEscape = { fg = colors.red, bg = nil, style = nil },
 	TSStringSpecial = { fg = colors.red, bg = nil, style = nil },
 	TSSymbol = { fg = colors.light_green, bg = nil, style = nil },
-	TSTag = { fg = colors.blue, bg = nil, style = nil },
+	TSTag = { link="Tag" },
 	TSTagAttribute = { fg = colors.yellow, bg = nil, style = nil },
 	TSTagDelimiter = { fg = colors.light_yellow, bg = nil, style = nil },
 	TSText = { fg = colors.white, bg = nil, style = nil },
@@ -202,13 +192,13 @@ local groups = {
 	TSNote = { fg = colors.light_grey, bg = nil, style = nil },
 	TSWarning = { fg = colors.light_red, bg = nil, style = faber.styles.underline_dashed },
 	TSDanger = { fg = colors.light_red, bg = nil, style = faber.styles.underline_curly },
-	TSTodo = { fg = colors.white, bg = nil, style = nil },
-	TSType = { fg = colors.green, bg = nil, style = nil },
-	TSTypeBuiltin = { fg = colors.green, bg = nil, style = nil },
-	TSTypeQualifier = { fg = colors.light_green, bg = nil, style = nil },
-	TSTypeDefinition = { fg = colors.magenta, bg = nil, style = nil },
+	TSTodo = { link="Todo" },
+	TSType = { link = "Type" },
+	TSTypeBuiltin = { link = "Type" },
+	TSTypeQualifier = { link = "Type" },
+	TSTypeDefinition = { link = "Type" },
 	TSVariable = { fg = colors.white, bg = nil, style = faber.styles.italic },
-	TSVariableBuiltin = { fg = colors.white, bg = nil, style = faber.styles.italic },
+	TSVariableBuiltin = { link = "TSVariable" },
 
 	NvimTreeSymlink = { fg = colors.white, bg = nil, style = faber.styles.underline_dashed },
 	NvimTreeFolderName = { fg = colors.white, bg = nil, style = faber.styles.bold },
@@ -249,7 +239,8 @@ local groups = {
 	-- NvimTreeLiveFilterPrefix = { fg = nil, bg = nil, style = nil },
 	-- NvimTreeLiveFilterValue = { fg = nil, bg = nil, style = nil },
 	-- NvimTreeBookmark = { fg = nil, bg = nil, style = nil }
-}
 
-faber.register_colors(colors)
-faber.highlight_groups(groups)
+	GitSignsAdd = { fg = colors.light_green, bg = colors.none, style = nil },
+	GitSignsChange = { fg = colors.light_yellow, bg = colors.none, style = nil },
+	GitSignsDelete = { fg = colors.light_red, bg = colors.none, style = nil }
+})
