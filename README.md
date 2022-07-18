@@ -65,7 +65,7 @@ local faber = require("faber")
 
 local colors = faber.register_colors({
 	red = { color = "#d9595f", fallback = 1 },
-	ligth_red = { color = "#f26e74", fallback = 9 },
+	light_red = { color = "#f26e74", fallback = 9 },
 
 	green = { color = "#608f73", fallback = 2 },
 	light_green = { color = "#82c29c", fallback = 10 },
