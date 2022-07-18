@@ -62,7 +62,6 @@ local function get_true_color(color)
 end
 
 local function get_fallback_color(color)
-
 	if type(color) ~= "table" then
 		return
 	end
@@ -125,7 +124,9 @@ function faber.register_colors(colors)
 end
 
 function faber.get_true_colors()
-	local result = object_map(faber.colors, get_true_color)
+	local result = object_map(faber.colors, function(_, value)
+		return get_true_color(value)
+	end)
 
 	result = object_filter(result, function(name, _)
 		return name ~= "none"
@@ -135,7 +136,9 @@ function faber.get_true_colors()
 end
 
 function faber.get_fallback_colors()
-	local result = object_map(faber.colors, get_fallback_color)
+	local result = object_map(faber.colors, function(_, value)
+		return get_fallback_color(value)
+	end)
 
 	result = object_filter(result, function(name, _)
 		return name ~= "none"
