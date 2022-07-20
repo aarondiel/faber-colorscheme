@@ -152,7 +152,7 @@ faber.highlight_groups({
 	TSFuncMacro = { fg = colors.light_cyan, bg = nil, style = nil },
 	TSInclude = { link="Include" },
 	TSKeyword = { link="Keyword" },
-	TSKeywordFunction = { link = "Keyword" },
+	TSKeywordFunction = { fg = colors.light_yellow, bg = nil, style = nil },
 	TSKeywordOperator = { link = "Keyword" },
 	TSKeywordReturn = { link = "Keyword" },
 	TSLabel = { link="Label" },
