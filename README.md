@@ -1,6 +1,6 @@
 <h1 align="center">faber-colorscheme</h1>
 
-<p align="center"><img src="assets/faber.webp" alt="banner"/></p>
+<p align="center"><img width=500 src="assets/faber.webp" alt="banner"/></p>
 
 a tool for creating neovim colorschemes that work on terminals with
 *truecolor* as well as *base 16*.
