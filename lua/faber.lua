@@ -143,6 +143,8 @@ function faber.get_fallback_colors()
 	result = object_filter(result, function(name, _)
 		return name ~= "none"
 	end)
+
+	return result
 end
 
 function faber.clear_highlight_group(group_name)
