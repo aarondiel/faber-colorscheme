@@ -1,5 +1,7 @@
 <h1 align="center">faber-colorscheme</h1>
 
+<p align="center"><img src="assets/faber.webp" alt="banner"/></p>
+
 a tool for creating neovim colorschemes that work on terminals with
 *truecolor* as well as *base 16*.
 
@@ -13,7 +15,7 @@ add the colorscheme in your packer config and set the colorscheme
 add({
 	"aarondiel/faber-colorscheme",
 	config = function()
-		vim.cmd("silent colorscheme faber")
+		vim.cmd("colorscheme faber")
 	end
 })
 ```

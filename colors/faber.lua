@@ -58,7 +58,7 @@ faber.highlight_groups({
 	-- MsgArea = { fg = nil, bg = nil, style = nil },
 	-- MsgSeparator = { fg = nil, bg = nil, style = nil },
 	-- MoreMsg = { fg = nil, bg = nil, style = nil },
-	-- NonText = { fg = nil, bg = nil, style = nil },
+	NonText = { link = "Comment" },
 	Normal = { fg = colors.white, bg = nil, style = nil },
 	-- NormalFloat = { fg = nil, bg = nil, style = nil },
 	-- NormalNC = { fg = nil, bg = nil, style = nil },
