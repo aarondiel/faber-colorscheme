@@ -11,6 +11,7 @@ as well as make them work with *termguicolors* enabled or disabled.
 ## installation
 
 add the colorscheme in your packer config and set the colorscheme
+
 ```lua
 add({
 	"aarondiel/faber-colorscheme",
@@ -28,21 +29,22 @@ see [data types](#data-types) for an explenation / definition for types like `st
 
 available properties:
 
-| property                                                                                                   | description                                                                                                                                                                                                |
-|:-----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *styles*: styles                                                                                           | a table of all of the different styles                                                                                                                                                                     |
-| *colors*: colors                                                                                           | a table of all colors set by the colorscheme, for this to work `register_colors` has to have been called. `colors.none` is automatically added and can be used to clear a foreground or background color   |
-| *register_colors*(colors: color[]): color[]                                                                | save the colors in `colors`, so that they can be imported elsewhere under `faber.colors`                                                                                                                   |
-| *get_true_colors*(color: color): Record<string, string>                                                    | get a table of all colors names with their true color (if no true color is defined, it will not be included)                                                                                               |
-| *get_fallback_colors*(color: color): number                                                                | get a table of all colors names with their fallback color (if no fallback color is defined, it will not be included)                                                                                       |
-| *clear_highlight_group*(group_name: string): void                                                          | clear highight group with the name `group`                                                                                                                                                                 |
-| *link_highlight_group*(from_group: string, to_group: string): void                                         | link `from_group` to use the highlighting from `from_group`                                                                                                                                                |
-| *highlight_group*(group_name: string, foreground: color, background: color, style: styles[indexof styles]) | update a single highlight group (`foreground`, `background` and `style` have to be in the default form for faber)                                                                                          |
-| *highlight_groups*(groups: Record<string, group>)                                                          | calls `highlight_group` for each entry in `groups`                                                                                                                                                         |
+| property                                                                                                         | description                                                                                                                                                                                                |
+|:-----------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `styles: styles`                                                                                                 | a table of all of the different styles                                                                                                                                                                     |
+| `colors: colors`                                                                                                 | a table of all colors set by the colorscheme, for this to work `register_colors` has to have been called. `colors.none` is automatically added and can be used to clear a foreground or background color   |
+| `register_colors(colors: color[]): color[]`                                                                      | save the colors in `colors`, so that they can be imported elsewhere under `faber.colors`                                                                                                                   |
+| `get_true_colors(color: color): Record<string, string>`                                                          | get a table of all colors names with their true color (if no true color is defined, it will not be included)                                                                                               |
+| `get_fallback_colors(color: color): number`                                                                      | get a table of all colors names with their fallback color (if no fallback color is defined, it will not be included)                                                                                       |
+| `clear_highlight_group(group_name: string): void`                                                                | clear highight group with the name `group`                                                                                                                                                                 |
+| `link_highlight_group(from_group: string, to_group: string): void`                                               | link `from_group` to use the highlighting from `from_group`                                                                                                                                                |
+| `highlight_group(group_name: string, foreground: color, background: color, style: styles[indexof styles]): void` | update a single highlight group (`foreground`, `background` and `style` have to be in the default form for faber)                                                                                          |
+| `highlight_groups(groups: Record<string, group>): void`                                                          | calls `highlight_group` for each entry in `groups`                                                                                                                                                         |
 
 this allows you to make your own colorschemes using the functions defined in this plugin or use the colors elsewhere (for instance for a statusline).
 
 ## example
+
 in **.config/nvim/colors/colorscheme.lua** (where colorscheme is the name of your custom colorscheme):
 
 ```lua
@@ -121,6 +123,7 @@ an empty `table` or `nil` results in the color being inherited.
 (see [default colorscheme](#default-colorscheme) for standart base 16 codes and their corresponding color)
 
 ### styles
+
 ```typescript
 type styles = {
 	bold: "bold",
@@ -189,5 +192,5 @@ setting the highlight group.
 
 ## todo:
 
-- typings (emmylua seems to only provide very basic typings)
+- typings (emmylua does not seem to be quite fit for doing that)
 - ability to create custom highlighting groups
