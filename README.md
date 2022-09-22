@@ -93,7 +93,13 @@ faber.highlight_groups({
 	TSComment = { link = "Comment" },
 
 	-- remove the highlighting of errors
-	Error = { clear = true }
+	Error = {}
+
+	-- don't change the formatting of Comment, but make it bold
+	Comment = { style = faber.styles.bold, default = true }
+
+	-- highlight misspelled items with a curly red underline
+	SpellBad = { style = faber.styles.underline_curly(colors.red) }
 })
 ```
 
@@ -125,18 +131,20 @@ an empty `table` or `nil` results in the color being inherited.
 ### styles
 
 ```typescript
+type optional_argument = (arg: T extends string) => T
+
 type styles = {
-	bold: "bold",
-	underline: "underline",
-	underline_double: "underlineline",
-	underline_curly: "undercurl",
-	underline_dotted: "underdot",
-	underline_dashed: "underdash",
-	strikethrough: "strikethrough",
-	inverse_foreground_background: "reverse",
-	italic: "italic",
-	standout: "standout",
-	none: "nocombine"
+	bold: boolean,
+	underline: optional_argument,
+	underline_double: optional_argument,
+	underline_curly: optional_argument,
+	underline_dotted: optional_argument,
+	underline_dashed: optional_argument,
+	font: optional_argument,
+	strikethrough: boolean,
+	inverse_foreground_background: boolean,
+	italic: boolean,
+	standout: boolean
 }
 ```
 
@@ -155,18 +163,17 @@ type group = {
 	background?: color,
 	bg?: color,
 	style?: styles[keyof styles],
-	clear?: bool,
-	link?: string
-}
+	link?: string,
+	default: boolean
+} | [
+	color, color, style, boolean
+]
 ```
 
 **group.foreground** and **group.fg** are interchangable, although
 **group.foreground** would take precedence over **group.fg**.
 
 the same applies to **group.background** and **group.bg**.
-
-**group.clear** automatically invokes *faber.clear_highlight_group* before
-setting the highlight group.
 
 **group.link** automatically invokes *faber.link_highlight_group*
 
@@ -193,4 +200,3 @@ setting the highlight group.
 ## todo:
 
 - typings (emmylua does not seem to be quite fit for doing that)
-- ability to create custom highlighting groups
