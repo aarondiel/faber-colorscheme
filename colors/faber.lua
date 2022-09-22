@@ -62,7 +62,7 @@ faber.highlight_groups({
 	Normal = { fg = colors.white, bg = nil, style = nil },
 	-- NormalFloat = { fg = nil, bg = nil, style = nil },
 	-- NormalNC = { fg = nil, bg = nil, style = nil },
-	Pmenu = { fg = nil, bg = colors.grey, style = nil },
+	Pmenu = { fg = nil, bg = colors.none, style = nil },
 	PmenuSel = { fg = colors.white, bg = colors.dark_grey, style = nil },
 	PmenuSbar = { fg = nil, bg = colors.grey, style = nil },
 	PmenuThumb = { fg = nil, bg = colors.light_grey, style = nil },
