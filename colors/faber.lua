@@ -309,5 +309,7 @@ faber.highlight_groups({
 
 	GitSignsAdd = { fg = colors.light_green, bg = colors.none, style = nil },
 	GitSignsChange = { fg = colors.light_yellow, bg = colors.none, style = nil },
-	GitSignsDelete = { fg = colors.light_red, bg = colors.none, style = nil }
+	GitSignsDelete = { fg = colors.light_red, bg = colors.none, style = nil },
+
+	markdownUrl = { fg = colors.light_blue, bg = nil, style = faber.styles.italic }
 })
