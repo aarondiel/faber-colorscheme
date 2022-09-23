@@ -95,7 +95,7 @@ faber.highlight_groups({
 	Character = { fg = colors.light_yellow, bg = nil, style = faber.styles.italic },
 	Number = { fg = colors.white, bg = nil, style = nil },
 	Boolean = { link = "Constant" },
-	Float = { fg = nil, bg = colors.white, style = nil },
+	Float = { fg = colors.white, bg = nil, style = nil },
 	-- Identifier = { fg = nil, bg = nil, style = nil },
 	Function = { fg = colors.light_cyan, bg = nil, style = nil },
 	-- Statement = { fg = nil, bg = nil, style = nil },
