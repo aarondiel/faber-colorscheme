@@ -116,7 +116,7 @@ function faber.highlight_group(name, fg, bg, style, default)
 		underlineline = style.underline_double or false,
 		undercurl = style.unerline_curly or false,
 		underdot = style.underline_dotted or false,
-		underdash = style.underline_dashed or false,
+		underdashed = style.underline_dashed or false,
 		strikethrough = style.strikethrough or false,
 		default = default or false,
 		ctermfg = get_fallback_color(fg),
