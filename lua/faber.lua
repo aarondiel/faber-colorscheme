@@ -125,7 +125,7 @@ function faber.highlight_group(name, fg, bg, style, default)
 end
 
 function faber.link_highlight_group(from, to)
-	vim.cmd("highlight! link " .. from .. " " .. to)
+	vim.api.nvim_set_hl(0, from, { link = to })
 end
 
 function faber.highlight_groups(groups)
