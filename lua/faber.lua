@@ -113,7 +113,7 @@ function faber.highlight_group(name, fg, bg, style, default)
 		reverse = style.reverse_foregroun_background or false,
 		standout = style.standout or false,
 		underline = style.underline or false,
-		underlineline = style.underline_double or false,
+		underdouble = style.underline_double or false,
 		undercurl = style.unerline_curly or false,
 		underdotted = style.underline_dotted or false,
 		underdashed = style.underline_dashed or false,
